@@ -24,12 +24,15 @@ form.addEventListener(
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-
+  if (!form.email.value || !form.message.value) {
+    alert('Należy wypełnić wszystkie pola!');
+    return;
+  }
   if (form.email.value && form.message.value) {
     form.email.value = '';
     (form.message.value = ''),
       console.log(JSON.parse(localStorage.getItem(KEY)));
-    localStorage.clear();
+
     data = {};
   }
 });
